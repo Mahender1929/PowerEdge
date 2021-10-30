@@ -24,14 +24,32 @@ public class TableMetaData {
 		this.tableName = tableName;
 		if (tableName.equalsIgnoreCase("INCT"))
 			this.name = "Deposit Transaction";
-
 		else if (tableName.equalsIgnoreCase("GLIF"))
 			this.name = "General Ledger Interface";
 		else if (tableName.equalsIgnoreCase("INCT@RRBINCT"))
-			this.name = "OLD Deposit Transaction ";
-		
-
+			this.name = "OLD Deposit Transaction";
+		else if (tableName.equalsIgnoreCase("GECT"))
+			this.name = "NV_BGL Transaction";
+		else if (tableName.equalsIgnoreCase("MCAD"))
+			this.name = "NV_MCAD_Maker Checker Details";
+		else if (tableName.equalsIgnoreCase("BOCT"))
+			this.name = "NV_LOAN Account Transaction";
+		else if (tableName.equalsIgnoreCase("AUDT"))
+			this.name = "NV_Audit Master";
+		else if (tableName.equalsIgnoreCase("RIGH"))
+			this.name = "NV_RIGH_Account_Risk_Grade_History";
+		else if (tableName.equalsIgnoreCase("STID"))
+			this.name = "NV_STID_Staff ID details";
+		else if (tableName.equalsIgnoreCase("CIFX"))
+			this.name = "NV_CIFX_CKYC Customer Details";
+		else if (tableName.equalsIgnoreCase("INSL"))
+			this.name = "NV_Insurance-INSL";
+		else if (tableName.equalsIgnoreCase("CUSM A,CUSVAA B "))
+			this.name = "CUSM,CUSVAA";
+		else if (tableName.equalsIgnoreCase("inct_err"))
+			this.name = "INCT ERROR";
 	}
+	
 
 	public String getTableName() {
 		return tableName;

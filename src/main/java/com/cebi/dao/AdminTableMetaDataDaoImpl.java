@@ -67,6 +67,8 @@ public class AdminTableMetaDataDaoImpl implements AdminTableMetaDataDao {
 				setTableLabel(labels,resultSet.getString("view_name").trim(),tableMetaData);
 				tableNames.add(tableMetaData);
 				}
+				List<String> localview = staticReportDaoImpl.getLocalViewFromDb();
+				tableNames.addAll(localview.stream().map(data -> new TableMetaData(data, data)).collect(Collectors.toList()));
 			}
 		} catch (SQLException e) {
 			logger.info("Exception in retrieveDbTables() Method:: " + e.getMessage());
