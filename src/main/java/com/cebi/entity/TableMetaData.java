@@ -24,6 +24,7 @@ public class TableMetaData {
 		this.tableName = tableName;
 		if (tableName.equalsIgnoreCase("INCT"))
 			this.name = "Deposit Transaction";
+
 		else if (tableName.equalsIgnoreCase("GLIF"))
 			this.name = "General Ledger Interface";
 		else if (tableName.equalsIgnoreCase("INCT@RRBINCT"))
@@ -49,7 +50,6 @@ public class TableMetaData {
 		else if (tableName.equalsIgnoreCase("inct_err"))
 			this.name = "INCT ERROR";
 	}
-	
 
 	public String getTableName() {
 		return tableName;

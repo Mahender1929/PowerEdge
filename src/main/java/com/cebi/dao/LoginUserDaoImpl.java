@@ -46,6 +46,7 @@ public class LoginUserDaoImpl implements LoginDao {
 	@SuppressWarnings("unchecked")
 	@Transactional()
 	public List<Object[]> validateLoginUser(TellerMaster tellerMaster) {
+		logger.info("LoginUserDaoImpl::validateLoginUser::start");
 		logger.info("inside validatLoginUser start time::" + System.currentTimeMillis());
 		Session session = sessionFactory.getCurrentSession();
 		Query query = session.createQuery("SELECT T.tellerid,T.ip,T.branchid,T.bankCode,T.ccdp,T.tellertype FROM TellerMaster T WHERE tellerid=:tellerid AND pwd=:pwd");
@@ -59,6 +60,7 @@ public class LoginUserDaoImpl implements LoginDao {
 	@SuppressWarnings("unchecked")
 	@Transactional
 	public List<Object[]> validateSuperLoginUser(TellerMaster tellerMaster) {
+		logger.info("LoginUserDaoImpl::validateSuperLoginUser::start");
 		logger.info("inside validateSuperLoginUser start time::" + System.currentTimeMillis());
 		Session session = sessionFactory.getCurrentSession();
 		Query query = session.createQuery("SELECT T.tellerid,T.ip,T.branchid,T.bankCode,T.ccdp,T.tellertype FROM TellerMaster T WHERE tellerid=:tellerid AND pwd=:pwd AND bankCode=:bankcode");
@@ -74,6 +76,7 @@ public class LoginUserDaoImpl implements LoginDao {
 
 	@Transactional
 	public boolean runScript(String bankName) {
+		logger.info("LoginUserDaoImpl::runScript::start");
 		Banks db = adminReportService.populateBankDbDetail(bankName);
 		Session session = cebiConstant.getCurrentSession(bankName, db);
 		if(session!=null){

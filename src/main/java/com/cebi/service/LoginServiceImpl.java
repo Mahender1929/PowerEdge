@@ -2,15 +2,11 @@ package com.cebi.service;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cebi.dao.LoginDao;
-import com.cebi.entity.Banks;
 import com.cebi.entity.TellerMaster;
 
 @Service

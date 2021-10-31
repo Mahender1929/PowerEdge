@@ -13,7 +13,6 @@ public class ApplicationLabelServiceImpl implements ApplicationLabelService {
 	ApplicationLabelDao applicationLabelDao;
 
 	public List<ApplicationLabel> retrieveAllLabels() {
-
 		return applicationLabelDao.retrieveAllLabels();
 	}
 }

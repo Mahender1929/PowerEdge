@@ -26,6 +26,7 @@ public class ApplicationLabelDaoImpl implements ApplicationLabelDao {
 	@Override
 	@Transactional
 	public List<ApplicationLabel> retrieveAllLabels() {
+		logger.info("ApplicationLabelDaoImpl::retrieveAllLabels::start");
 		logger.info("retrieveAllLabels start time:: " + System.currentTimeMillis());
 		List<ApplicationLabel> applicationLabels = null;
 		ApplicationLabel label =null;
@@ -34,14 +35,12 @@ public class ApplicationLabelDaoImpl implements ApplicationLabelDao {
 		if (cache.get("labels")== null) {
 			Session session = sessionFactory.getCurrentSession();
 			applicationLabels = (List<ApplicationLabel>) session.createQuery("FROM ApplicationLabel").setCacheable(true).list();
-			
 			for(ApplicationLabel lbl:applicationLabels){
 				label = new ApplicationLabel();
 				label.setLabelCode(lbl.getLabelCode().trim());
 				label.setAppLabel(lbl.getAppLabel().trim());
 				labels.add(label);
 			}
-			
 			cache.put("labels", labels);
 		} else {
 			for (Map.Entry<String, List<ApplicationLabel>> entry : cache.entrySet()) {

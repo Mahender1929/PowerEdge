@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.cebi.utility;
 
 import java.util.ArrayList;
@@ -13,7 +8,27 @@ public final class Table {
 
     private final int tableWidth;
 
-    private List<String> headersList;
+    public Board getBoard() {
+		return board;
+	}
+
+	public void setBoard(Board board) {
+		this.board = board;
+	}
+
+	public Block getInitialTableBlock() {
+		return initialTableBlock;
+	}
+
+	public void setInitialTableBlock(Block initialTableBlock) {
+		this.initialTableBlock = initialTableBlock;
+	}
+
+	public int getTableWidth() {
+		return tableWidth;
+	}
+
+	private List<String> headersList;
 
     private List<List<String>> rowsList;
 

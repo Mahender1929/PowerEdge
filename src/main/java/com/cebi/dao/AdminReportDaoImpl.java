@@ -702,6 +702,7 @@ public class AdminReportDaoImpl extends PdfUtils implements AdminReportDao {
 
     @Override
     public Banks retreiveDbConnection(String bank) {
+    logger.info("AdminReportDaoImpl::retreiveDbConnection::start");	
 	List<Banks> banks = new ArrayList<>();
 	Query query = sessionFactory.getCurrentSession().createQuery("FROM Banks WHERE bankCode = :code");
 	query.setParameter("code", bank);
@@ -765,6 +766,7 @@ public class AdminReportDaoImpl extends PdfUtils implements AdminReportDao {
 
 	@Override
 	public BigInteger getReportQueueStatusCount(String bank, String date) {
+		logger.info("AdminReportDaoImpl::getReportQueueStatusCount::start");
 		    SQLQuery query = sessionFactory.getCurrentSession().createSQLQuery("SELECT COUNT(*) FROM   `reportqueuetable` where DATE(`timeadded`)= :date and `bank`= :bankcode and `status`= :rstatus ");
 	        query.setParameter("date", date);
 	        query.setParameter("bankcode", bank);
@@ -776,7 +778,7 @@ public class AdminReportDaoImpl extends PdfUtils implements AdminReportDao {
 
 	@Override
 	public  LinkedHashMap<String, Integer> getTotalCount(String bankCode) {
-		
+		logger.info("AdminReportDaoImpl::getTotalCount::start");
 		 LinkedList<String> list = new LinkedList<String>();
 		 LinkedHashMap<String, Integer> hashMap = new LinkedHashMap<String, Integer>();
 		 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYY-MM-dd");

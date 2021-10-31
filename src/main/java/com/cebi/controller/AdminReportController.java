@@ -112,6 +112,7 @@ public class AdminReportController {
 	@RequestMapping(value = MappingConstant.LANDING_PAGE, method = RequestMethod.POST)
 	public String callLandingPage(@ModelAttribute("loginForm") TellerMaster tellerMaster, Model model,
 			HttpServletRequest request) throws Exception {
+		logger.info("AdminReportController::callLandingPage::start");
 		String page = null;
 		boolean ipAddress = false;
 		List<Object[]> master = null;
@@ -193,8 +194,7 @@ public class AdminReportController {
 							session.setAttribute("isCCdp", tellerMaster.isCcdp());
 							session.setAttribute("bnkname", tellerMaster.getBankName());
 							session.setAttribute("tellertype", tellerMaster.getTellertype());
-							List<TableMetaData> tables = adminTableMetaDataService
-									.retrieveDbTables(tellerMaster.getBankCode());
+							List<TableMetaData> tables = adminTableMetaDataService.retrieveDbTables(tellerMaster.getBankCode());
 							if (!tables.isEmpty()) {
 								map.put("views", tables);
 								page = "landing";

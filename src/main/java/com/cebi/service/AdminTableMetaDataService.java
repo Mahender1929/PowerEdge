@@ -7,6 +7,5 @@ import com.cebi.entity.TableMetaData;
 
 public interface AdminTableMetaDataService {
 	public List<TableMetaData> retrieveDbTables(String bank);
-
 	public List<ColumnNames> retrieveTableColumns(String table, String bank);
 }

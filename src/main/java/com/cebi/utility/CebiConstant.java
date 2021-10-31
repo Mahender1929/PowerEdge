@@ -1,16 +1,14 @@
 package com.cebi.utility;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import HibernateUtil.HibernateUtil;
-
 import com.cebi.entity.Banks;
 import com.cebi.service.AdminReportService;
+
+import HibernateUtil.HibernateUtil;
 
 @Repository
 public class CebiConstant {

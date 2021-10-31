@@ -20,6 +20,7 @@ public class SessionFilter implements Filter{
 	}
 
 	@Override
+	@SuppressWarnings("unused")
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain filterchain) throws IOException, ServletException {
 		// TODO Auto-generated method stub

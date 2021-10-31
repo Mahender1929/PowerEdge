@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 
 public class DatabaseConnection {
 
+	@SuppressWarnings("deprecation")
 	public static Connection getConnection() {
 		Connection conn = null;
 

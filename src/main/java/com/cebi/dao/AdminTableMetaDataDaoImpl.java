@@ -47,6 +47,7 @@ public class AdminTableMetaDataDaoImpl implements AdminTableMetaDataDao {
 
 	@Override
 	public List<TableMetaData> retrieveDbTables(String bank) {
+		logger.info("AdminTableMetaDataDaoImpl::retrieveDbTables::start");
 		List<TableMetaData> tableNames = new ArrayList<TableMetaData>();
 		Connection connection = null;
 		ResultSet resultSet = null;
@@ -67,9 +68,9 @@ public class AdminTableMetaDataDaoImpl implements AdminTableMetaDataDao {
 				setTableLabel(labels,resultSet.getString("view_name").trim(),tableMetaData);
 				tableNames.add(tableMetaData);
 				}
-				List<String> localview = staticReportDaoImpl.getLocalViewFromDb();
-				tableNames.addAll(localview.stream().map(data -> new TableMetaData(data, data)).collect(Collectors.toList()));
 			}
+			List<String> localview = staticReportDaoImpl.getLocalViewFromDb();
+			tableNames.addAll(localview.stream().map(data -> new TableMetaData(data, data)).collect(Collectors.toList()));
 		} catch (SQLException e) {
 			logger.info("Exception in retrieveDbTables() Method:: " + e.getMessage());
 			e.getMessage();
@@ -98,6 +99,7 @@ public class AdminTableMetaDataDaoImpl implements AdminTableMetaDataDao {
 	
 	@Override
 	public Map<String, String> retrieveDbTable(String bank) {
+		logger.info("AdminTableMetaDataDaoImpl::retrieveDbTable::start");
 		Map<String, String> map = new HashMap<>();
 		Connection connection = null;
 		ResultSet resultSet = null;
@@ -151,8 +153,9 @@ public class AdminTableMetaDataDaoImpl implements AdminTableMetaDataDao {
 	}
 
 	private void setTableLabel(List<ApplicationLabel> labels, String string, TableMetaData tableMetaData) {
-		if (addLabels(labels, string) != null) {
-			tableMetaData.setName(addLabels(labels, string));
+		String matchTable = addLabels(labels, string);
+		if (matchTable != null) {
+			tableMetaData.setName(matchTable);
 		} else {
 			tableMetaData.setName(string);
 		}
@@ -173,6 +176,7 @@ public class AdminTableMetaDataDaoImpl implements AdminTableMetaDataDao {
 
 	@Override
 	public List<ColumnNames> retrieveTableColumns(String table, String bank) {
+		logger.info("AdminTableMetaDataDaoImpl::retrieveTableColumns::start");
 		ColumnNames columnName = null;
 		Connection connection = null;
 		PreparedStatement prepareStatement = null;
@@ -226,13 +230,14 @@ public class AdminTableMetaDataDaoImpl implements AdminTableMetaDataDao {
 				e.printStackTrace();
 			}
 		}
-	populateRequiredFiels(table, names);
+		populateRequiredFiels(table, names);
 		populateMandatoryFiels(table, names);
 		names.get(0).setAppLabels(applicationLabelDao.retrieveAllLabels());
 		return names;
 	}
 
 	protected void populateRequiredFiels(String table, List<ColumnNames> names) {
+		logger.info("AdminTableMetaDataDaoImpl::populateRequiredFiels::start");
 		RequiredField fields = adminReportDao.populateFields(table);
 		logger.info("populateRequiredFiels===="+fields);
 		if (fields.getFiled() != null) {
@@ -248,6 +253,7 @@ public class AdminTableMetaDataDaoImpl implements AdminTableMetaDataDao {
 	}
 
 	protected void populateMandatoryFiels(String table, List<ColumnNames> names) {
+		logger.info("AdminTableMetaDataDaoImpl::populateMandatoryFiels::start");
 		logger.info("table name====="+table.toString());
 		logger.info("names====="+names.toString());
 		RequiredField fields = staticReportDaoImpl.populateManFields(table);
